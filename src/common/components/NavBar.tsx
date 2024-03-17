@@ -85,7 +85,7 @@ const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"
-          className="w-10 h-10 text-black my-auto transition ease-linear hover:bg-gray-100 hover:cursor-pointer duration-300"
+          className="w-10 h-10 my-auto transition ease-linear hover:bg-gray-100 hover:cursor-pointer duration-300"
         >
           <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
         </svg>
