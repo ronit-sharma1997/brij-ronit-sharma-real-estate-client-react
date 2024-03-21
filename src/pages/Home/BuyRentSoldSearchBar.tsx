@@ -2,7 +2,7 @@ import SearchBar from '../../common/components/SearchBar.tsx';
 
 const BuyRentSoldSearchBar: React.FC = () => {
   return (
-    <div className="absolute bottom-[20%] left-1/2 -translate-x-1/2 -translate-y-[15%]">
+    <div className="absolute bottom-[7%] left-1/2 -translate-x-1/2">
       <ul className="flex text-sm font-roboto-serif font-medium text-center">
         <li className="me-1">
           <div className="inline-block px-8 py-3 text-white bg-black rounded-t-lg active cursor-pointer">Buy</div>
