@@ -2,6 +2,7 @@ import NavBar from '../../common/components/NavBar.tsx';
 import BuyRentSoldSearchBar from './BuyRentSoldSearchBar.tsx';
 import UniqueCollections from './UniqueCollections.tsx';
 import Communities from './Communities.tsx';
+import About from '../../common/components/About.tsx';
 
 const Home: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const Home: React.FC = () => {
       </div>
       <UniqueCollections />
       <Communities />
+      <About />
     </>
   );
 };
