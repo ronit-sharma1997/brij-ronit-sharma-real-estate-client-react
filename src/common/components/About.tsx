@@ -5,7 +5,7 @@ const About: React.FC = () => {
     <div className="flex flex-wrap">
       {/*Left Side - Nice Picture*/}
       <div className="w-full lg:w-1/2">
-        <img className="w-full h-full" src="common/father-son.jpg" />
+        <img className="w-full h-[85vh]" src="common/father-son.jpg" />
       </div>
       {/*Right Side - Profile Description*/}
       <div className="w-full lg:w-1/2 relative my-auto pt-10">
