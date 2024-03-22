@@ -3,6 +3,7 @@ import BuyRentSoldSearchBar from './BuyRentSoldSearchBar.tsx';
 import UniqueCollections from './UniqueCollections.tsx';
 import Communities from './Communities.tsx';
 import About from '../../common/components/About.tsx';
+import Testimonials from '../../common/components/Testimonials.tsx';
 
 const Home: React.FC = () => {
   return (
@@ -19,6 +20,7 @@ const Home: React.FC = () => {
       <UniqueCollections />
       <Communities />
       <About />
+      <Testimonials />
     </>
   );
 };
