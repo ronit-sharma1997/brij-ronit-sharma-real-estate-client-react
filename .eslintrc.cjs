@@ -14,20 +14,13 @@ module.exports = {
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
   rules: {
-    "no-unused-vars": [
-      "error",
-      {
-        "vars": "all",
-        "args": "after-used",
-        "ignoreRestSiblings": true,
-        "argsIgnorePattern": "^_"
-      }
-    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": ["error"],
     "react-refresh/only-export-components": [
       "warn",
       { allowConstantExport: true },
     ],
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off"
+    "react/prop-types": "off",
   },
 };
