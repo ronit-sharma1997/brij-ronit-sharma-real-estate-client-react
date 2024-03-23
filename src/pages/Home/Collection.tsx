@@ -64,7 +64,7 @@ const Collection: React.FC<{ city: string }> = ({ city }) => {
   return (
     <>
       {!loading && (
-        <div className="w-full mt-12 lg:w-[32%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
+        <div className="card w-full mt-12 lg:w-[32%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
           <div className="flex">
             <div className="w-1/2 relative max-h-64">
               <img
