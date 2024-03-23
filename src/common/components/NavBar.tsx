@@ -10,10 +10,10 @@ const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
         <div className="font-style-script tracking-[0.5rem] my-auto text-4xl md:text-6xl">BR</div>
         <div>
           <div className="font-playfair-display text-2xl md:text-3xl">Brij & Ronit Sharma</div>
-          <div className="font-roboto-serif uppercase font-medium tracking-widest text-sm md:text-xl mt-1.5">
+          <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl mt-1.5">
             Real Estate Agents
           </div>
-          <div className="font-roboto-serif uppercase font-medium tracking-widest text-sm md:text-xl">
+          <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl">
             DDS Real Estate
           </div>
         </div>
@@ -25,7 +25,7 @@ const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
           <Menu as="div" className="relative inline-block text-left">
             <div>
               <Menu.Button className="inline-flex">
-                <div className="relative uppercase after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
+                <div className="relative uppercase after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
                   Property Search
                 </div>
                 <ChevronDownIcon
@@ -64,16 +64,16 @@ const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
             </Transition>
           </Menu>
         </div>
-        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
+        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
           About Us
         </div>
-        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
+        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
           Stories
         </div>
-        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
+        <div className="font-roboto-serif uppercase font-medium text-base my-auto mx-7 relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
           Contact
         </div>
-        <div className="font-roboto-serif uppercase font-medium text-base my-auto ml-7 relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
+        <div className="font-roboto-serif uppercase font-medium text-base my-auto ml-7 relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300 cursor-pointer">
           Home Valuation
         </div>
       </div>

@@ -26,7 +26,6 @@ const Home: React.FC = () => {
       <Stories />
       <hr className="w-full xl:w-[90%] mx-auto" />
       <Footer />
-      <hr className="w-full xl:w-[90%] mx-auto" />
     </>
   );
 };

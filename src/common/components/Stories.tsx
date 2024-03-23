@@ -45,8 +45,8 @@ const Stories: React.FC = () => {
   ];
   return (
     <div className="flex flex-wrap justify-between w-full xl:w-[85%] 2xl:w-[63%] px-4 py-5 md:px-10 md:py-10 mx-auto">
-      <div className="w-full font-playfair-display text-2xl tracking-widest md:text-4xl">Read the LATEST Stories</div>
-      <div className="w-full mt-2 font-roboto-serif text-md tracking-widest md:text-xl">
+      <div className="w-full font-playfair-display tracking-widest text-2xl md:text-3xl">Read the LATEST Stories</div>
+      <div className="w-full mt-2 font-roboto-serif tracking-widest text-base md:text-xl ">
         Up-to-Date News from your fellow real estate experts
       </div>
       {stories.map((story, idx) => (
@@ -59,8 +59,8 @@ const Stories: React.FC = () => {
           title={story.title}
         />
       ))}
-      <div className="w-full text-center mt-24">
-        <button className="w-full md:w-48 rounded-none border-2 px-2 py-4 border-black font-roboto-serif text-sm uppercase text-black hover:bg-black hover:cursor-pointer hover:text-white transition-[all] duration-700 mr-9">
+      <div className="w-full text-center mt-10 md:mt-24">
+        <button className="w-[87%] md:w-48 rounded-none border-2 py-4 border-black font-roboto-serif text-xs md:text-sm uppercase text-black hover:bg-black hover:cursor-pointer hover:text-white transition-[all] duration-700">
           Show All
         </button>
       </div>

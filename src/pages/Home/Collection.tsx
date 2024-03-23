@@ -64,19 +64,19 @@ const Collection: React.FC<{ city: string }> = ({ city }) => {
   return (
     <>
       {!loading && (
-        <div className="card w-full mt-12 lg:w-[32%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
-          <div className="flex">
-            <div className="w-1/2 relative max-h-64">
+        <div className="card w-full mt-6 md:mt-12 lg:w-[48%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
+          <div className="flex h-60">
+            <div className="w-[65%] relative max-h-64">
               <img
                 className="w-full h-full border-r-4"
                 src={collectionData.photoUrls[0]}
                 alt="Sunset in the mountains"
               />
-              <div className="absolute top-3 left-1.5 font-roboto-serif text-md uppercase bg-white rounded-full px-3">
+              <div className="absolute top-3 left-1.5 font-roboto-serif text-xs md:text-sm font-semibold uppercase bg-white rounded-full px-3">
                 {collectionData.propertyCount} properties
               </div>
             </div>
-            <div className="w-1/2 max-h-64">
+            <div className="w-[35%]">
               <img
                 className="w-full border-b-4 h-1/2"
                 src={collectionData.photoUrls[1]}
@@ -87,66 +87,22 @@ const Collection: React.FC<{ city: string }> = ({ city }) => {
           </div>
 
           <div className="flex flex-wrap px-6 py-4">
-            <div className="city w-full font-playfair-display font-medium text-xl md:text-2xl mb-1 tracking-widest">
+            <div className="city w-full font-playfair-display font-semibold text-xl md:text-2xl mb-1 tracking-widest">
               {city} Listings
             </div>
-            <div className="price w-full font-roboto-serif text-md md:text-xl 2xl:text-md tracking-widest">
+            <div className="price w-full font-roboto-serif text-base md:text-lg tracking-widest">
               Price Range: ${numberWithCommas(collectionData.minPrice)} - ${numberWithCommas(collectionData.maxPrice)}
             </div>
-            <div className="w-full min-[1956px]:w-1/2 mt-2">
-              <div className="beds font-roboto-serif text-md md:text-xl 2xl:text-lg tracking-widest inline-flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 md:w-7 md:h-7 me-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"
-                  />
-                </svg>
+            <div>
+              <div className="beds font-roboto-serif text-base md:text-lg tracking-widest inline-flex mr-4">
+                <img src="common/double-bed-icon.svg" alt="Bedrooms" className="w-6 h-6 my-auto mr-2" />
                 {collectionData.minBeds} to {collectionData.maxBeds} beds
               </div>
-            </div>
-            <div className="baths w-full min-[1956px]:w-1/2 mt-2">
-              <div className="font-roboto-serif text-md md:text-xl 2xl:text-lg tracking-widest inline-flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 md:w-7 md:h-7 me-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"
-                  />
-                </svg>
-                2 to 3 baths
+              <div className="font-roboto-serif text-base md:text-lg tracking-widest inline-flex mr-4">
+                <img src="common/bathtub-icon.svg" alt="Bathrooms" className="w-6 h-6 my-auto mr-2" />2 to 3 baths
               </div>
-            </div>
-            <div className="w-full min-[1956px]:w-3/4 mt-2">
-              <div className="sqft font-roboto-serif text-md md:text-xl 2xl:text-lg tracking-widest inline-flex">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="1.5"
-                  stroke="currentColor"
-                  className="w-5 h-5 md:w-7 md:h-7 me-1"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5V3.545M12.75 21h7.5V10.75M2.25 21h1.5m18 0h-18M2.25 9l4.5-1.636M18.75 3l-1.5.545m0 6.205 3 1m1.5.5-1.5-.5M6.75 7.364V3h-3v18m3-13.636 10.5-3.819"
-                  />
-                </svg>
+              <div className="sqft font-roboto-serif text-base md:text-lg tracking-widest inline-flex">
+                <img src="common/tape-ruler-icon.svg" alt="Sqft" className="w-6 h-6 my-auto mr-2" />
                 {numberWithCommas(collectionData.minSqFt)} to {numberWithCommas(collectionData.maxSqFt)} sqft
               </div>
             </div>

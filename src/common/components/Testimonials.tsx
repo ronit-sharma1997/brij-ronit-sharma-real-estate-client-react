@@ -56,8 +56,8 @@ const Testimonials: React.FC = () => {
     },
   ];
   return (
-    <div className="flex flex-wrap bg-black py-20 md:pt-10">
-      <div className="w-full font-playfair-display text-2xl tracking-widest text-white text-center md:text-4xl mb-10">
+    <div className="flex flex-wrap bg-black py-10 md:py-20 md:pt-10">
+      <div className="w-full font-playfair-display tracking-widest text-white text-center text-2xl md:text-3xl mb-10">
         Client Testimonials
       </div>
       <TestimonialCarousel
