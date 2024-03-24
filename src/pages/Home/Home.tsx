@@ -16,6 +16,9 @@ const Home: React.FC = () => {
           parentClassName={
             'flex flex-wrap justify-between px-5 py-5 md:px-10 md:py-5 bg-gradient-to-b from-black text-white absolute top-0 w-full'
           }
+          hoverStyle={
+            'relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
+          }
         />
         <BuyRentSoldSearchBar />
       </div>
@@ -24,7 +27,7 @@ const Home: React.FC = () => {
       <About />
       <Testimonials />
       <Stories />
-      <hr className="w-full xl:w-[90%] mx-auto" />
+      <hr className="w-full 2xl:w-[85%] mx-auto" />
       <Footer />
     </>
   );

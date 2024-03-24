@@ -3,7 +3,7 @@ import { faSquareFacebook, faSquareInstagram } from '@fortawesome/free-brands-sv
 
 const Privacy: React.FC = () => {
   return (
-    <div className="flex flex-wrap justify-between w-full xl:w-[90%] px-4 py-2 md:px-10 md:py-2 mx-auto font-roboto-serif">
+    <div className="flex flex-wrap justify-between w-full 2xl:w-[85%] px-4 py-2 md:px-10 md:py-2 mx-auto font-roboto-serif">
       <div>
         <span className="text-sm md:text-base">Privacy</span>
         <span className="bg-black rounded-full w-1 h-1 inline-block ml-2 align-middle"></span>

@@ -47,11 +47,17 @@ const PropertySearch: React.FC<{ hoverStyle: string }> = ({ hoverStyle }) => {
   );
 };
 
-const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
+const NavBar: React.FC<{ parentClassName: string; hoverStyle: string }> = ({ parentClassName, hoverStyle }) => {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <>
-      <MobileNavBar isOpen={isOpen} setIsOpen={setIsOpen} />
+      <MobileNavBar
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        hoverStyle={
+          'relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
+        }
+      />
       <div className={parentClassName}>
         {/* Left Side - BR Logo along with Titles */}
         <div className="flex">
@@ -70,16 +76,8 @@ const NavBar: React.FC<{ parentClassName: string }> = ({ parentClassName }) => {
         <NavLinks
           className={'hidden min-[919px]:flex mx-auto mt-5 xl:mt-0 xl:mx-0'}
           childrenMargin={''}
-          hoverStyle={
-            'relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
-          }
-          propertySearch={
-            <PropertySearch
-              hoverStyle={
-                'relative after:bg-white after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
-              }
-            />
-          }
+          hoverStyle={hoverStyle}
+          propertySearch={<PropertySearch hoverStyle={hoverStyle} />}
         />
         {/* Right Side - Hamburger Icon on Small Screens */}
         <div className="flex min-[919px]:hidden">

@@ -64,7 +64,7 @@ const Collection: React.FC<{ city: string }> = ({ city }) => {
   return (
     <>
       {!loading && (
-        <div className="card w-full mt-6 md:mt-12 lg:w-[48%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
+        <div className="card w-full mt-6 md:mt-12 lg:w-[48%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white cursor-pointer">
           <div className="flex h-60">
             <div className="w-[65%] relative max-h-64">
               <img
@@ -91,7 +91,7 @@ const Collection: React.FC<{ city: string }> = ({ city }) => {
               {city} Listings
             </div>
             <div className="price w-full font-roboto-serif text-base md:text-lg tracking-widest">
-              Price Range: ${numberWithCommas(collectionData.minPrice)} - ${numberWithCommas(collectionData.maxPrice)}
+              Price: ${numberWithCommas(collectionData.minPrice)} - ${numberWithCommas(collectionData.maxPrice)}
             </div>
             <div>
               <div className="beds font-roboto-serif text-base md:text-lg tracking-widest inline-flex mr-4">

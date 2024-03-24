@@ -40,7 +40,11 @@ const MobilePropertySearch: React.FC<{ hoverStyle: string }> = ({ hoverStyle }) 
   );
 };
 
-const MobileNavBar: React.FC<{ isOpen: boolean; setIsOpen: (arg0: boolean) => void }> = ({ isOpen, setIsOpen }) => {
+const MobileNavBar: React.FC<{ isOpen: boolean; setIsOpen: (arg0: boolean) => void; hoverStyle: string }> = ({
+  isOpen,
+  setIsOpen,
+  hoverStyle,
+}) => {
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
@@ -84,16 +88,8 @@ const MobileNavBar: React.FC<{ isOpen: boolean; setIsOpen: (arg0: boolean) => vo
                 <NavLinks
                   className={'flex flex-col mx-auto mt-5 xl:mt-0 xl:mx-0'}
                   childrenMargin={'mt-6'}
-                  hoverStyle={
-                    'relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
-                  }
-                  propertySearch={
-                    <MobilePropertySearch
-                      hoverStyle={
-                        'relative after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 hover:after:w-full after:transition-all after:duration-300'
-                      }
-                    />
-                  }
+                  hoverStyle={hoverStyle}
+                  propertySearch={<MobilePropertySearch hoverStyle={hoverStyle} />}
                 />
               </Dialog.Panel>
             </Transition.Child>

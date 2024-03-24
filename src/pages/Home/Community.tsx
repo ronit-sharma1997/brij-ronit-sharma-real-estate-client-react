@@ -1,6 +1,6 @@
 const Community: React.FC<{ cityImgUrl: string; cityName: string }> = ({ cityImgUrl, cityName }) => {
   return (
-    <div className="group relative w-full h-64 md:h-72 md:w-1/2 xl:w-1/3 2xl:w-1/5">
+    <div className="group relative w-full h-64 md:h-72 md:w-1/2 xl:w-1/3 min-[1700px]:w-1/5">
       <img className="w-full h-full" src={cityImgUrl} alt={`${cityName} Picture`} />
       <div className="absolute top-0 w-full h-full bg-black opacity-40 group-hover:opacity-0 transition-[all] duration-700"></div>
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 group-hover:top-1/3 transition-[all] duration-700">

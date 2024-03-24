@@ -12,7 +12,7 @@ const Communities: React.FC = () => {
       <Community cityImgUrl={'Home/piscataway.jpg'} cityName={'Piscataway'} />
       <Community cityImgUrl={'Home/new-brunswick.jpg'} cityName={'New Brunswick'} />
       <Community cityImgUrl={'Home/perth-amboy.JPG'} cityName={'Perth Amboy'} />
-      <div className="w-full h-64 md:h-72 md:w-1/2 xl:w-1/3 2xl:w-1/5 relative">
+      <div className="w-full h-64 md:h-72 md:w-1/2 xl:w-1/3 min-[1700px]:w-1/5 relative">
         <div className="rounded-none border-2 px-2 py-4 border-white font-roboto-serif text-xs md:text-sm uppercase text-white absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 hover:bg-white hover:cursor-pointer hover:text-black transition-[all] duration-700">
           Show all Areas
         </div>

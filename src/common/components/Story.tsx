@@ -8,7 +8,7 @@ const Story: React.FC<{
   howLongRead: string;
 }> = ({ imgUrl, title, description, whenPublished, howLongRead }) => {
   return (
-    <div className="w-full mt-6 md:mt-12 md:w-[47%] lg:w-[32%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white">
+    <div className="w-full mt-6 md:mt-12 md:w-[47%] lg:w-[32%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white cursor-pointer">
       <img className="w-full" src={imgUrl} alt="Sunset in the mountains" />
       <div className="px-6 py-4">
         <div className="font-roboto-serif font-semibold text-lg md:text-xl mb-2">{title}</div>
