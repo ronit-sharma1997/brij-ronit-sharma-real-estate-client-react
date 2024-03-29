@@ -6,7 +6,7 @@ const UniqueCollections: React.FC = () => {
       <div className="w-full font-playfair-display tracking-widest text-2xl md:text-3xl">
         Discover UNIQUE Collections
       </div>
-      <div className="w-full mt-2 font-roboto-serif text-base md:text-xl tracking-widest">
+      <div className="w-full mt-2 font-roboto-serif text-base md:text-lg tracking-widest">
         Signature Listings just for you
       </div>
       <Collection city={'Iselin'} />
