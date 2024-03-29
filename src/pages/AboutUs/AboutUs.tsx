@@ -2,6 +2,8 @@ import NavBar from '../../common/components/NavBar.tsx';
 import About from '../../common/components/About.tsx';
 import Testimonials from '../../common/components/Testimonials.tsx';
 import Footer from '../../common/components/Footer.tsx';
+import OurNumbers from './OurNumbers.tsx';
+import HomesBoughtSold from './HomesBoughtSold.tsx';
 
 const AboutUs: React.FC = () => {
   return (
@@ -13,6 +15,8 @@ const AboutUs: React.FC = () => {
         }
       />
       <About />
+      <OurNumbers />
+      <HomesBoughtSold />
       <Testimonials />
       <Footer />
     </>
