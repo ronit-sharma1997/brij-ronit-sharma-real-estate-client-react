@@ -8,7 +8,7 @@ export default {
       'style-script': ['"Style Script"', 'sans-serif'],
     },
     extend: {
-      screens: { '3xl': '1600px' },
+      screens: { '3xl': '1600px', '4xl': '2200px' },
     },
   },
   plugins: [],

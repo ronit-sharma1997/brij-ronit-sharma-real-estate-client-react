@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react';
-import './Collection.css';
 
 const Collection: React.FC<{ city: string }> = ({ city }) => {
   const [loading, setLoadingState] = useState(true);

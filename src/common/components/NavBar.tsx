@@ -11,7 +11,7 @@ const PropertySearch: React.FC<{ hoverStyle: string }> = ({ hoverStyle }) => {
         <div>
           <Menu.Button className="inline-flex">
             <div className={`relative uppercase cursor-pointer ${hoverStyle}`}>Property Search</div>
-            <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5 text-violet-200 hover:text-violet-100" aria-hidden="true" />
+            <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
           </Menu.Button>
         </div>
         <Transition

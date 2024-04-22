@@ -1,0 +1,28 @@
+.leaflet-div-icon {
+    background: transparent;
+    border: none;
+}
+
+.leaflet-popup-content {
+    margin: 0;
+}
+
+.leaflet-popup-content-wrapper {
+    padding: 0;
+}
+
+.leaflet-control { z-index: 0 !important}
+.leaflet-pane { z-index: 0 !important}
+.leaflet-top, .leaflet-bottom {z-index: 0 !important}
+
+.map {
+    height: max-content;
+}
+
+input[type="checkbox"] {
+    transform: scale(1.75);
+}
+
+input[type='checkbox'] {
+    accent-color: black;
+}
