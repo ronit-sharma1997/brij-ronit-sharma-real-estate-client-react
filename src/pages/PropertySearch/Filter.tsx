@@ -4,11 +4,14 @@ import ForSale from './ForSale.tsx';
 import Price from './Price.tsx';
 import HomeType from './HomeType.tsx';
 import BedBath from './BedBath.tsx';
+import PopupFilter from './PopupFilter.tsx';
+import useWindowDimensions from '../../common/hooks/useWindowDimensions.tsx';
 
 const Filter: React.FC<{ className: string; filterType: string }> = ({ className, filterType }) => {
   const [toggle, setToggle] = useState(false);
   const button = useRef<HTMLDivElement>(null);
   const menu = useRef<HTMLDivElement>(null);
+  const { height, width } = useWindowDimensions();
 
   const handleOutsideClick = (event: MouseEvent) => {
     if (menu.current && !menu.current.contains(event.target as Node) && event.target !== button.current) {
@@ -54,6 +57,7 @@ const Filter: React.FC<{ className: string; filterType: string }> = ({ className
               <button className="bg-black px-4 py-2 text-white rounded-md">Apply</button>
             </div>
           </div>
+          <PopupFilter isOpen={toggle && width < 575} />
         </div>
       );
     }
