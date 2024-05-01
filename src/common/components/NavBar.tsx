@@ -3,6 +3,7 @@ import MobileNavBar from './MobileNavBar.tsx';
 import NavLinks from './NavLinks.tsx';
 import { Menu, Transition } from '@headlessui/react';
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
+import { Link } from 'react-router-dom';
 
 const PropertySearch: React.FC<{ hoverStyle: string }> = ({ hoverStyle }) => {
   return (
@@ -28,14 +29,18 @@ const PropertySearch: React.FC<{ hoverStyle: string }> = ({ hoverStyle }) => {
               <Menu.Item>
                 <div>
                   <div>
-                    <span className="relative text-black after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full cursor-pointer">
-                      Buy
-                    </span>
+                    <Link to="/property-search">
+                      <span className="relative text-black after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full cursor-pointer">
+                        Buy
+                      </span>
+                    </Link>
                   </div>
                   <div className="mt-3">
-                    <span className="relative text-black after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full cursor-pointer">
-                      Rent
-                    </span>
+                    <Link to="/property-search">
+                      <span className="relative text-black after:bg-black after:absolute after:h-[1px] after:w-0 after:bottom-0 after:left-0 after:transition-all after:duration-300 hover:after:w-full cursor-pointer">
+                        Rent
+                      </span>
+                    </Link>
                   </div>
                 </div>
               </Menu.Item>
@@ -60,18 +65,20 @@ const NavBar: React.FC<{ parentClassName: string; hoverStyle: string }> = ({ par
       />
       <div className={parentClassName}>
         {/* Left Side - BR Logo along with Titles */}
-        <div className="flex">
-          <div className="font-style-script tracking-[0.5rem] my-auto text-4xl md:text-6xl">BR</div>
-          <div>
-            <div className="font-playfair-display text-2xl md:text-3xl">Brij & Ronit Sharma</div>
-            <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl mt-1.5">
-              Real Estate Agents
-            </div>
-            <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl">
-              DDS Real Estate
+        <Link to="/">
+          <div className="flex">
+            <div className="font-style-script tracking-[0.5rem] my-auto text-4xl md:text-6xl">BR</div>
+            <div>
+              <div className="font-playfair-display text-2xl md:text-3xl">Brij & Ronit Sharma</div>
+              <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl mt-1.5">
+                Real Estate Agents
+              </div>
+              <div className="font-roboto-serif uppercase font-medium tracking-widest text-base md:text-xl">
+                DDS Real Estate
+              </div>
             </div>
           </div>
-        </div>
+        </Link>
         {/* Right Side - Navigation Menus/Links */}
         <NavLinks
           className={'hidden min-[919px]:flex mx-auto mt-5 xl:mt-0 xl:mx-0'}

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 const NavLinks: React.FC<{
   className: string;
   childrenMargin: string;
@@ -11,22 +13,32 @@ const NavLinks: React.FC<{
       <div
         className={`font-roboto-serif uppercase font-medium text-base my-auto mx-7 cursor-pointer ${childrenMargin}`}
       >
-        <span className={`${hoverStyle}`}>About Us</span>
+        <Link to="/about-us">
+          <span className={`${hoverStyle}`}>About Us</span>
+        </Link>
       </div>
       <span
         className={`font-roboto-serif uppercase font-medium text-base my-auto mx-7 cursor-pointer ${childrenMargin}`}
       >
-        <span className={`${hoverStyle}`}>Stories</span>
+        <Link to="/stories">
+          <span className={`${hoverStyle}`}>Stories</span>
+        </Link>
       </span>
+
       <div
         className={`font-roboto-serif uppercase font-medium text-base my-auto mx-7 cursor-pointer ${childrenMargin}`}
       >
-        <span className={`${hoverStyle}`}>Contact</span>
+        <Link to="/contact-us">
+          <span className={`${hoverStyle}`}>Contact</span>
+        </Link>
       </div>
+
       <div
         className={`font-roboto-serif uppercase font-medium text-base my-auto mx-7 cursor-pointer ${childrenMargin}`}
       >
-        <span className={`${hoverStyle}`}>Home Valuation</span>
+        <Link to="/home-valuation">
+          <span className={`${hoverStyle}`}>Home Valuation</span>
+        </Link>
       </div>
     </div>
   );

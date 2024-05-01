@@ -27,7 +27,7 @@ const Home: React.FC = () => {
       <About />
       <Testimonials />
       <Stories />
-      <hr className="w-full 2xl:w-[85%] mx-auto" />
+      <hr className="w-full xl:w-[85%] 3xl:w-[63%] mx-auto" />
       <Footer />
     </>
   );
