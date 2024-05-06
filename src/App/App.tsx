@@ -1,12 +1,11 @@
 import './App.css';
-import Home from './pages/Home';
-import AboutUs from './pages/AboutUs';
-import PropertySearch from './pages/PropertySearch';
+import Home from '../pages/Home';
+import AboutUs from '../pages/AboutUs';
+import PropertySearch from '../pages/PropertySearch';
 import { Route, Routes } from 'react-router-dom';
-import Stories from './common/components/Stories.tsx';
-import StoryPage from './pages/Stories/StoryPage.tsx';
-import ContactUs from './pages/ContactUs/ContactUs.tsx';
-import HomeValuation from './pages/HomeValuation/HomeValuation.tsx';
+import StoryPage from '../pages/Stories/StoryPage.tsx';
+import ContactUs from '../pages/ContactUs/ContactUs.tsx';
+import HomeValuation from '../pages/HomeValuation/HomeValuation.tsx';
 
 function App() {
   return (
