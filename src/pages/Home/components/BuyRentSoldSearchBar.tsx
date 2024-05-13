@@ -1,6 +1,6 @@
-import SearchBar from '../../common/components/SearchBar.tsx';
-import { useAppDispatch, useAppSelector } from '../../App/hook.ts';
-import { selectSearchType, setSearchType } from '../../common/slices/propertySearchSlice.tsx';
+import SearchBar from '../../../common/components/SearchBar.tsx';
+import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
+import { selectSearchType, setSearchType } from '../../../common/slices/PropertySearchSlice.tsx';
 
 const BuyRentSoldSearchBar: React.FC = () => {
   const dispatch = useAppDispatch();

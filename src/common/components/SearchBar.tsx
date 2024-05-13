@@ -4,7 +4,7 @@ import {
   selectSearchResults,
   fetchSearchResults,
   setSearchText,
-} from '../slices/propertySearchSlice.tsx';
+} from '../slices/PropertySearchSlice.tsx';
 import { useEffect, useState } from 'react';
 
 const SearchBar: React.FC = () => {
