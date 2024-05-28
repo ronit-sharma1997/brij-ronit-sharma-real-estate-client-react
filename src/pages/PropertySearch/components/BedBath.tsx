@@ -1,5 +1,16 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
+import {
+  selectMaxBaths,
+  selectMaxBeds,
+  selectMinBaths,
+  selectMinBeds,
+  setMaxBaths,
+  setMaxBeds,
+  setMinBaths,
+  setMinBeds,
+} from '../slices/PropertySearchSlice.tsx';
 
 const BedBath: React.FC<{
   buttonRef: React.RefObject<HTMLDivElement>;
@@ -8,6 +19,11 @@ const BedBath: React.FC<{
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
   allFilter: boolean;
 }> = ({ buttonRef, menuRef, toggle, setToggle, allFilter }) => {
+  const dispatch = useAppDispatch();
+  const minBeds = useAppSelector(selectMinBeds);
+  const maxBeds = useAppSelector(selectMaxBeds);
+  const minBaths = useAppSelector(selectMinBaths);
+  const maxBaths = useAppSelector(selectMaxBaths);
   return (
     <>
       {!allFilter && (
@@ -28,36 +44,40 @@ const BedBath: React.FC<{
             <div className="w-full text-lg px-4">Beds</div>
             <div className="inline-flex w-full mt-2 items-center px-4">
               <input
-                type="number"
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-                min="0"
-                max="10"
+                type="text"
+                pattern="\d+"
+                value={minBeds}
+                onChange={(event) => dispatch(setMinBeds(event.target.value))}
                 placeholder="Min"
               />
               <div className="text-2xl px-2 text-black/30">-</div>
               <input
-                type="number"
+                type="text"
+                pattern="\d+"
+                value={maxBeds}
+                onChange={(event) => dispatch(setMaxBeds(event.target.value))}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-                min="0"
-                max="10"
                 placeholder="Max"
               />
             </div>
             <div className="w-full text-lg px-4 mt-5">Baths</div>
             <div className="inline-flex w-full mt-2 items-center px-4">
               <input
-                type="number"
+                type="text"
+                pattern="\d+"
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-                min="0"
-                max="10"
                 placeholder="Min"
+                value={minBaths}
+                onChange={(event) => dispatch(setMinBaths(event.target.value))}
               />
               <div className="text-2xl px-2 text-black/30">-</div>
               <input
-                type="number"
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-                min="0"
-                max="10"
+                type="text"
+                pattern="\d+"
+                value={maxBaths}
+                onChange={(event) => dispatch(setMaxBaths(event.target.value))}
                 placeholder="Max"
               />
             </div>
@@ -73,37 +93,41 @@ const BedBath: React.FC<{
           <div className="w-full text-lg px-4">Beds</div>
           <div className="inline-flex w-full mt-2 items-center px-4">
             <input
-              type="number"
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-              min="0"
-              max="10"
+              type="text"
+              pattern="\d+"
+              value={minBeds}
+              onChange={(event) => dispatch(setMinBeds(event.target.value))}
               placeholder="Min"
             />
             <div className="text-2xl px-2 text-black/30">-</div>
             <input
-              type="number"
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-              min="0"
-              max="10"
+              type="text"
+              pattern="\d+"
+              value={maxBeds}
+              onChange={(event) => dispatch(setMaxBeds(event.target.value))}
               placeholder="Max"
             />
           </div>
           <div className="w-full text-lg px-4 mt-5">Baths</div>
           <div className="inline-flex w-full mt-2 items-center px-4">
             <input
-              type="number"
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-              min="0"
-              max="10"
+              type="text"
+              pattern="\d+"
               placeholder="Min"
+              value={minBaths}
+              onChange={(event) => dispatch(setMinBaths(event.target.value))}
             />
             <div className="text-2xl px-2 text-black/30">-</div>
             <input
-              type="number"
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
-              min="0"
-              max="10"
               placeholder="Max"
+              type="text"
+              pattern="\d+"
+              value={maxBaths}
+              onChange={(event) => dispatch(setMaxBaths(event.target.value))}
             />
           </div>
         </div>

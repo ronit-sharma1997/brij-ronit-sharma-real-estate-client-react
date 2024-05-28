@@ -10,8 +10,12 @@ const CityCollection: React.FC<{ collection: Collection }> = ({ collection }) =>
         <div className="card w-full mt-6 md:mt-12 lg:w-[48%] 2xl:w-[31%] rounded overflow-hidden shadow-lg divide-white cursor-pointer">
           <div className="flex h-60">
             <div className="w-[65%] relative max-h-64">
-              <img className="w-full h-full border-r-4" src={collection.photoUrls[0]} alt="Sunset in the mountains" />
-              <div className="absolute top-3 left-1.5 font-roboto-serif text-xs md:text-sm font-semibold uppercase bg-white rounded-full px-3">
+              <img
+                className="w-full h-full border-r-4 relative -z-20"
+                src={collection.photoUrls[0]}
+                alt="Sunset in the mountains"
+              />
+              <div className="-z-[1] absolute top-3 left-1.5 font-roboto-serif text-xs md:text-sm font-semibold uppercase bg-white rounded-full px-3">
                 {collection.propertyCount} properties
               </div>
             </div>

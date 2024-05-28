@@ -5,7 +5,7 @@ import Price from './Price.tsx';
 import HomeType from './HomeType.tsx';
 import BedBath from './BedBath.tsx';
 import PopupFilter from './PopupFilter.tsx';
-import useWindowDimensions from '../../common/hooks/useWindowDimensions.tsx';
+import useWindowDimensions from '../../../common/hooks/useWindowDimensions.tsx';
 
 const Filter: React.FC<{ className: string; filterType: string }> = ({ className, filterType }) => {
   const [toggle, setToggle] = useState(false);

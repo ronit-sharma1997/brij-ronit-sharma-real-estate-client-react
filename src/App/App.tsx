@@ -1,7 +1,7 @@
 import './App.css';
 import Home from '../pages/Home/components';
 import AboutUs from '../pages/AboutUs';
-import PropertySearch from '../pages/PropertySearch';
+import PropertySearch from '../pages/PropertySearch/components';
 import { Route, Routes } from 'react-router-dom';
 import StoryPage from '../pages/Stories/StoryPage.tsx';
 import ContactUs from '../pages/ContactUs/ContactUs.tsx';

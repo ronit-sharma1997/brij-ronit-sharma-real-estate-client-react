@@ -4,12 +4,16 @@ import {
   selectSearchResults,
   fetchSearchResults,
   setSearchText,
-} from '../slices/PropertySearchSlice.tsx';
+  setSelectedSearchResult,
+  selectSelectedSearchResult,
+} from '../slices/PropertySearchBarSlice.tsx';
 import { useEffect, useState } from 'react';
+import { fetchProperties, setSearchResults } from '../../pages/PropertySearch/slices/PropertySearchSlice.tsx';
 
-const SearchBar: React.FC = () => {
+const SearchBar: React.FC<{ propertySearch: boolean }> = ({ propertySearch }) => {
   const searchText = useAppSelector(selectSearchText);
   const searchResults = useAppSelector(selectSearchResults);
+  const selectedSearchResult = useAppSelector(selectSelectedSearchResult);
   const [searchRequestStatus, setSearchRequestStatus] = useState('idle');
 
   const dispatch = useAppDispatch();
@@ -40,7 +44,7 @@ const SearchBar: React.FC = () => {
   }, [searchText, dispatch]);
 
   return (
-    <div className="relative font-roboto-serif">
+    <div className={`relative font-roboto-serif ${propertySearch ? 'border-r-2' : ''}`}>
       <div className="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
         <svg
           className="w-6 h-6 text-black"
@@ -93,11 +97,19 @@ const SearchBar: React.FC = () => {
       {
         // If search text matches any of the predefined values, display the options, otherwise don't
       }
-      {searchResults.length > 0 && searchRequestStatus != 'pending' && (
-        <div className="absolute left-0 mt-1 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
+      {searchResults.length > 0 && searchRequestStatus != 'pending' && !selectedSearchResult && (
+        <div className="z-10 absolute left-0 mt-1 w-full origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black/5 focus:outline-none">
           {searchResults.map((result, idx) => {
             return (
-              <div key={idx} className={`px-5 py-4 flex justify-between cursor-pointer rounded-md hover:bg-gray-100`}>
+              <div
+                key={idx}
+                className={`px-5 py-4 flex justify-between cursor-pointer rounded-md hover:bg-gray-100`}
+                onClick={() => {
+                  dispatch(setSearchResults([]));
+                  dispatch(setSelectedSearchResult(result));
+                  dispatch(fetchProperties());
+                }}
+              >
                 {createHighlightedText(result.label, searchText)}
                 <div className="rounded-full bg-black text-white px-4 py-0.5 text-sm">{result.type}</div>
               </div>

@@ -1,16 +1,35 @@
 import { MapContainer, Popup, TileLayer } from 'react-leaflet';
-import { convertHomePriceToMarker } from '../../common/utils/HomeData.tsx';
+import { convertHomePriceToMarker } from '../../../common/utils/HomeData.tsx';
 import PropertySearchCard from './PropertySearchCard.tsx';
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import EnhancedMarker from './EnhancedMarker.tsx';
 import MarkerIconExample from './MarkerIconExample.tsx';
+import { LatLngBounds } from 'leaflet';
 
 const Map: React.FC<{ properties: object[]; currentListingId: string }> = ({ properties, currentListingId }) => {
   const mapRef = useRef(null);
+
+  useEffect(() => {
+    mapRef.current?.fitBounds(
+      properties.length > 0
+        ? properties.map((property) => [property.Latitude, property.Longitude])
+        : new LatLngBounds([
+            [40.56889041349963, -74.32974128343162],
+            [40.56736215069169, -74.29837090107152],
+          ]),
+    );
+  }, [properties]);
   return (
     <div className="w-0 min-[1200px]:w-[50%] 2xl:w-[60%] 4xl:w-[65%] sticky top-0">
       <MapContainer
-        bounds={properties.map((property) => [property.Latitude, property.Longitude])}
+        bounds={
+          properties.length > 0
+            ? properties.map((property) => [property.Latitude, property.Longitude])
+            : new LatLngBounds([
+                [40.56889041349963, -74.32974128343162],
+                [40.56736215069169, -74.29837090107152],
+              ])
+        }
         zoom={15}
         ref={mapRef}
         scrollWheelZoom={true}
@@ -36,8 +55,9 @@ const Map: React.FC<{ properties: object[]; currentListingId: string }> = ({ pro
                 />
               }
             >
-              <Popup maxWidth={400}>
+              <Popup maxWidth={450}>
                 <PropertySearchCard
+                  isPopup={true}
                   imgUrl={property.Media[0].MediaURL}
                   sqFt={property.LivingArea}
                   beds={property.BedroomsTotal}

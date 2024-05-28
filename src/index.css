@@ -19,8 +19,13 @@
 
 .is-loading {
     .pics,
+    .property-pics,
     .city,
     .price,
+    .beds,
+    .baths,
+    .subdivision,
+    .address,
     .beds,
     .baths,
     .sqft {
@@ -34,6 +39,13 @@
 
     .pics {
         height: 250px;
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    .property-pics {
+        height: 190px;
         width: 100%;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;

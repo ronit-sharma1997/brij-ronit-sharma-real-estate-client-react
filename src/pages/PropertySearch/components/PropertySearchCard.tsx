@@ -1,7 +1,8 @@
 import React from 'react';
-import { convertHomePriceToString } from '../../common/utils/HomeData.tsx';
+import { convertHomePriceToString } from '../../../common/utils/HomeData.tsx';
 
 const PropertySearchCard: React.FC<{
+  isPopup: boolean;
   imgUrl: string;
   subdivision: string;
   address: string;
@@ -12,10 +13,10 @@ const PropertySearchCard: React.FC<{
   width: string;
   listingId: string;
   onHover(listingId: string): void;
-}> = ({ imgUrl, subdivision, address, beds, baths, sqFt, listPrice, width, listingId, onHover }) => {
+}> = ({ isPopup, imgUrl, subdivision, address, beds, baths, sqFt, listPrice, width, listingId, onHover }) => {
   return (
     <div
-      className={`card mb-6 ${width} rounded overflow-hidden shadow-lg divide-white cursor-pointer`}
+      className={`card ${isPopup ? 'mb-0' : 'mb-6'} ${width} rounded overflow-hidden shadow-lg divide-white cursor-pointer`}
       onMouseEnter={() => onHover(listingId)}
       onMouseLeave={() => onHover('')}
     >
@@ -25,7 +26,7 @@ const PropertySearchCard: React.FC<{
           {subdivision}
         </div>
         <div className="w-full font-roboto-serif text-sm 3xl:text-base tracking-widest mt-0.5">{address}</div>
-        <div className="w-full 4xl:w-[80%] flex mt-1 justify-between">
+        <div className={`w-full ${isPopup ? '4xl:w-[95%]' : '4xl:w-[80%]'} flex mt-1 justify-between`}>
           <div className="font-roboto-serif text-xs 3xl:text-sm tracking-widest inline-flex">
             <img src="common/double-bed-icon.svg" alt="Bedrooms" className="w-4 h-4 my-auto mr-2" />
             {beds} Beds
@@ -41,7 +42,7 @@ const PropertySearchCard: React.FC<{
         </div>
         <div className="w-full font-roboto-serif text-xl 3xl:text-2xl tracking-widest mt-2">
           ${convertHomePriceToString(listPrice)}{' '}
-          <span className="rounded-full bg-red-700 text-base text-white px-2 py-1">-5.00%</span>
+          {/*<span className="rounded-full bg-red-700 text-base text-white px-2 py-1">-5.00%</span>*/}
         </div>
       </div>
     </div>

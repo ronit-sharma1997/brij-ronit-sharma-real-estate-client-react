@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
-import propertySearchReducer from '../common/slices/PropertySearchSlice.tsx';
+import propertySearchBarReducer from '../common/slices/PropertySearchBarSlice.tsx';
 import collectionSearchReducer from '../pages/Home/slices/CollectionSearchSlice.tsx';
+import propertySearchReducer from '../pages/PropertySearch/slices/PropertySearchSlice.tsx';
 
 export const store = configureStore({
   reducer: {
-    propertySearch: propertySearchReducer,
+    propertySearchBar: propertySearchBarReducer,
     collectionSearch: collectionSearchReducer,
+    propertySearch: propertySearchReducer,
   },
 });
 

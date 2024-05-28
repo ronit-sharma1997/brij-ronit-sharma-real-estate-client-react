@@ -1,5 +1,7 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import React from 'react';
+import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
+import { selectMaxPrice, selectMinPrice, setMaxPrice, setMinPrice } from '../slices/PropertySearchSlice.tsx';
 
 const Price: React.FC<{
   buttonRef: React.RefObject<HTMLDivElement>;
@@ -8,6 +10,9 @@ const Price: React.FC<{
   setToggle: React.Dispatch<React.SetStateAction<boolean>>;
   allFilter: boolean;
 }> = ({ buttonRef, menuRef, toggle, setToggle, allFilter }) => {
+  const minPrice = useAppSelector(selectMinPrice);
+  const maxPrice = useAppSelector(selectMaxPrice);
+  const dispatch = useAppDispatch();
   return (
     <>
       {!allFilter && (
@@ -28,13 +33,19 @@ const Price: React.FC<{
             <div className="w-full text-lg px-4">Price</div>
             <div className="inline-flex w-full mt-2 items-center px-4">
               <input
-                type="number"
+                type="text"
+                pattern="\d+"
+                value={minPrice}
+                onChange={(event) => dispatch(setMinPrice(event.target.value))}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Min"
               />
               <div className="text-2xl px-2 text-black/30">-</div>
               <input
-                type="number"
+                type="text"
+                pattern="\d+"
+                value={maxPrice}
+                onChange={(event) => dispatch(setMaxPrice(event.target.value))}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Max"
               />
@@ -51,13 +62,19 @@ const Price: React.FC<{
           <div className="w-full text-lg px-4">Price</div>
           <div className="inline-flex w-full mt-2 items-center px-4">
             <input
-              type="number"
+              type="text"
+              pattern="\d+"
+              value={minPrice}
+              onChange={(event) => dispatch(setMinPrice(event.target.value))}
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
               placeholder="Min"
             />
             <div className="text-2xl px-2 text-black/30">-</div>
             <input
-              type="number"
+              type="text"
+              pattern="\d+"
+              value={maxPrice}
+              onChange={(event) => dispatch(setMaxPrice(event.target.value))}
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
               placeholder="Max"
             />
