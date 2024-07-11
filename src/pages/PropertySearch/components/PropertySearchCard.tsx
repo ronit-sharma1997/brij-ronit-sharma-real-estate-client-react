@@ -1,5 +1,7 @@
 import React from 'react';
 import { convertHomePriceToString } from '../../../common/utils/HomeData.tsx';
+import { useAppDispatch } from '../../../App/hook.ts';
+import { setIsModalOpen, setSelectProperty } from '../slices/PropertySearchSlice.tsx';
 
 const PropertySearchCard: React.FC<{
   isPopup: boolean;
@@ -12,18 +14,24 @@ const PropertySearchCard: React.FC<{
   listPrice: number;
   width: string;
   listingId: string;
+  city: string;
   onHover(listingId: string): void;
-}> = ({ isPopup, imgUrl, subdivision, address, beds, baths, sqFt, listPrice, width, listingId, onHover }) => {
+}> = ({ isPopup, imgUrl, subdivision, address, beds, baths, sqFt, listPrice, width, listingId, city, onHover }) => {
+  const dispatch = useAppDispatch();
   return (
     <div
       className={`card ${isPopup ? 'mb-0' : 'mb-6'} ${width} rounded overflow-hidden shadow-lg divide-white cursor-pointer`}
+      onClick={() => {
+        dispatch(setSelectProperty(listingId));
+        dispatch(setIsModalOpen(true));
+      }}
       onMouseEnter={() => onHover(listingId)}
       onMouseLeave={() => onHover('')}
     >
       <img className="w-full h-44 3xl:h-56" src={imgUrl} alt="Sunset in the mountains" />
       <div className="pt-2 pb-2 px-2">
         <div className="w-full font-roboto-serif font-semibold text-base 3xl:text-lg tracking-widest mt-2">
-          {subdivision}
+          {subdivision ? subdivision : city}
         </div>
         <div className="w-full font-roboto-serif text-sm 3xl:text-base tracking-widest mt-0.5">{address}</div>
         <div className={`w-full ${isPopup ? '4xl:w-[95%]' : '4xl:w-[80%]'} flex mt-1 justify-between`}>
@@ -41,8 +49,7 @@ const PropertySearchCard: React.FC<{
           </div>
         </div>
         <div className="w-full font-roboto-serif text-xl 3xl:text-2xl tracking-widest mt-2">
-          ${convertHomePriceToString(listPrice)}{' '}
-          {/*<span className="rounded-full bg-red-700 text-base text-white px-2 py-1">-5.00%</span>*/}
+          ${convertHomePriceToString(listPrice)}
         </div>
       </div>
     </div>

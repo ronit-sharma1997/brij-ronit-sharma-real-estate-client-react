@@ -2,7 +2,14 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import { Disclosure } from '@headlessui/react';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
-import { selectMLSStatus, selectSearchType, setMLSStatus, setSearchType } from '../slices/PropertySearchSlice.tsx';
+import {
+  fetchProperties,
+  selectMLSStatus,
+  selectSearchType,
+  setMLSStatus,
+  setSearchType,
+} from '../slices/PropertySearchSlice.tsx';
+import { fetchSearchResults } from '../../../common/slices/PropertySearchBarSlice.tsx';
 
 const ForSale: React.FC<{
   buttonRef: React.RefObject<HTMLDivElement>;
@@ -178,7 +185,12 @@ const ForSale: React.FC<{
           </Disclosure>
           <hr className="w-full" />
           <div className="py-4 w-full text-right">
-            <button className="bg-black px-4 py-2 text-white rounded-md mr-4">Apply</button>
+            <button
+              className="bg-black px-4 py-2 text-white rounded-md mr-4"
+              onClick={() => dispatch(fetchProperties())}
+            >
+              Apply
+            </button>
           </div>
         </div>
       </div>

@@ -1,0 +1,11 @@
+.reactMarkDown {
+font-family: "Roboto Serif";
+}
+
+.reactMarkDown ul {
+    list-style-type: disc;
+    margin-left: 30px;
+}
+
+.reactMarkDown li {
+}

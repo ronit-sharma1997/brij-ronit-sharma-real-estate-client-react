@@ -58,7 +58,7 @@ const Map: React.FC<{ properties: object[]; currentListingId: string }> = ({ pro
               <Popup maxWidth={450}>
                 <PropertySearchCard
                   isPopup={true}
-                  imgUrl={property.Media[0].MediaURL}
+                  imgUrl={property.Media ? property.Media[0].MediaURL : 'PropertySearch/image-not-available.png'}
                   sqFt={property.LivingArea}
                   beds={property.BedroomsTotal}
                   baths={property.BathroomsTotalDecimal}
@@ -66,10 +66,11 @@ const Map: React.FC<{ properties: object[]; currentListingId: string }> = ({ pro
                   subdivision={property.SubdivisionName}
                   listPrice={property.ListPrice}
                   width={'w-full'}
+                  city={property.City}
                   onHover={() => {
                     return;
                   }}
-                  listingId={''}
+                  listingId={property.ListingId}
                 />
               </Popup>
             </EnhancedMarker>

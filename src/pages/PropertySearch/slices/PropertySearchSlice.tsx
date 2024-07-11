@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../App/store.tsx';
+import { Property } from '../../../common/models/Property.tsx';
 
 interface PropertySearch {
-  properties: never[];
+  properties: Property[];
   searchType: string;
   mlsStatus: string;
   minPrice: string;
@@ -24,6 +25,8 @@ interface PropertySearch {
   status: string;
   error: string | null;
   searchResults: never[];
+  selectedProperty: Property;
+  isModalOpen: boolean;
 }
 
 const initialState: PropertySearch = {
@@ -49,6 +52,77 @@ const initialState: PropertySearch = {
   status: 'idle',
   error: null,
   searchResults: [],
+  selectedProperty: {
+    BedroomsTotal: 0,
+    OnMarketDate: '',
+    Flooring: [],
+    PhotosCount: 0,
+    FireplacesTotal: 0,
+    Cooling: [],
+    GarageYN: false,
+    ExteriorFeatures: [],
+    Longitude: 0,
+    PublicRemarks: '',
+    RoomBathroomFeatures: [],
+    RoomDiningRoomFeatures: [],
+    Appliances: [],
+    TaxAnnualAmount: 0,
+    ListOfficeName: '',
+    Basement: [],
+    Latitude: 0,
+    PropertyType: '',
+    BathroomsTotalDecimal: 0,
+    ListPrice: 0,
+    MlsStatus: '',
+    RoomMasterBedroomFeatures: [],
+    Gas: [],
+    FireplaceYN: false,
+    AttachedGarageYN: false,
+    StandardStatus: '',
+    Roof: [],
+    Stories: 0,
+    Levels: [],
+    InteriorFeatures: [],
+    BathroomsFull: 0,
+    LotSizeAcres: 0,
+    SubdivisionName: '',
+    Fencing: [],
+    WaterSource: [],
+    LotSizeDimensions: '',
+    StoriesTotal: 0,
+    YearBuilt: 0,
+    RoomKitchenFeatures: [],
+    OtherStructures: [],
+    LivingArea: 0,
+    LivingAreaUnits: '',
+    ParkingFeatures: [],
+    BathroomsHalf: 0,
+    LotSizeArea: 0,
+    Sewer: [],
+    Heating: [],
+    PatioAndPorchFeatures: [],
+    Utilities: [],
+    FireplaceFeatures: [],
+    WindowFeatures: [],
+    CommunityFeatures: [],
+    RoomsTotal: 0,
+    GarageSpaces: 0,
+    Media: [],
+    City: '',
+    TaxYear: 0,
+    Ownership: '',
+    LotFeatures: [],
+    PostalCode: '',
+    LotSizeSquareFeet: 0,
+    SrchitecturalStyle: [],
+    UnparsedAddress: '',
+    BuildingAreaTotal: 0,
+    ListingId: '',
+    PropertySubType: '',
+    DaysOnMarket: 0,
+    AssociationFee: 0,
+  },
+  isModalOpen: false,
 };
 
 export const fetchProperties = createAsyncThunk('get/fetchProperties', async (_, { getState }) => {
@@ -56,8 +130,7 @@ export const fetchProperties = createAsyncThunk('get/fetchProperties', async (_,
   const response = await fetch(
     `https://hhk7xb1yja.execute-api.us-east-1.amazonaws.com/Prod/properties?city=${propertySearchBar.selectedSearchResult ? propertySearchBar.selectedSearchResult.value : 'Iselin'}&propertyType=${propertySearch.searchType === 'For Sale' ? 'Residential' : 'Residential Lease'}&mlsStatus=${propertySearch.mlsStatus === '' ? 'Active' : propertySearch.mlsStatus}`,
   );
-  const payload = await response.json();
-  return payload['value'];
+  return await response.json();
 });
 
 export const propertySearchSlice = createSlice({
@@ -149,19 +222,29 @@ export const propertySearchSlice = createSlice({
     setSearchResults: (state, action: PayloadAction<never[]>) => {
       state.searchResults = action.payload;
     },
+    setSelectProperty: (state, action: PayloadAction<string>) => {
+      state.selectedProperty = state.properties.filter((property) => property.ListingId === action.payload)[0];
+      state.isModalOpen = true;
+    },
+    setIsModalOpen: (state, action: PayloadAction<boolean>) => {
+      state.isModalOpen = action.payload;
+    },
   },
   extraReducers(builder) {
     builder
       .addCase(fetchProperties.pending, (state, action) => {
         state.status = 'loading';
+        state.properties = [];
       })
       .addCase(fetchProperties.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        state.searchResults = action.payload;
+        console.log(action);
+        state.properties = action.payload;
       })
       .addCase(fetchProperties.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message ?? null;
+        state.properties = [];
       });
   },
 });
@@ -183,7 +266,11 @@ export const selectMinPrice = (state: RootState) => state.propertySearch.minPric
 
 export const selectMaxPrice = (state: RootState) => state.propertySearch.maxPrice;
 
-export const selectProperties = (state: RootState) => state.propertySearch.searchResults;
+export const selectProperties = (state: RootState) => state.propertySearch.properties;
+
+export const selectSelectedProperty = (state: RootState) => state.propertySearch.selectedProperty;
+
+export const selectIsModalOpen = (state: RootState) => state.propertySearch.isModalOpen;
 
 export const selectPropertySearchStatus = (state: RootState) => state.propertySearch.status;
 
@@ -198,6 +285,8 @@ export const {
   setSearchType,
   setMLSStatus,
   setSearchResults,
+  setSelectProperty,
+  setIsModalOpen,
 } = propertySearchSlice.actions;
 
 export default propertySearchSlice.reducer;

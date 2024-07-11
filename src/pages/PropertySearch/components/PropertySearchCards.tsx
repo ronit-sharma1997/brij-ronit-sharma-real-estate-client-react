@@ -32,6 +32,7 @@ const PropertySearchCards: React.FC<{ properties: object[]; onHover: (listingId:
             listPrice={property.ListPrice}
             width={'w-full min-[600px]:w-[48%] min-[840px]:w-[32%] min-[1200px]:w-[48%]'}
             listingId={property.ListingId}
+            city={property.City}
             onHover={onHover}
           />
         ))}
