@@ -3,6 +3,7 @@ import propertySearchBarReducer from '../common/slices/PropertySearchBarSlice.ts
 import collectionSearchReducer from '../pages/Home/slices/CollectionSearchSlice.tsx';
 import propertySearchReducer from '../pages/PropertySearch/slices/PropertySearchSlice.tsx';
 import storiesReducer from '../common/slices/StoriesSlice.tsx';
+import homeValuationReducer from '../pages/HomeValuation/slices/HomeValuationSlice.tsx';
 
 export const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
     collectionSearch: collectionSearchReducer,
     propertySearch: propertySearchReducer,
     stories: storiesReducer,
+    homeValuation: homeValuationReducer,
   },
 });
 
