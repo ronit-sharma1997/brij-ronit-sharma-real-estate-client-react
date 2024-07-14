@@ -1,5 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareInstagram, faSquareFacebook } from '@fortawesome/free-brands-svg-icons';
+import { Link } from 'react-router-dom';
 const About: React.FC = () => {
   return (
     <div className="flex flex-wrap">
@@ -35,12 +36,16 @@ const About: React.FC = () => {
           </div>
           {/*Buttons to navigate to other screens*/}
           <div className="w-full mt-8 mb-8">
-            <button className="w-full md:w-36 rounded-none border-2 px-2 py-4 border-black font-roboto-serif text-xs md:text-sm uppercase text-black hover:bg-black hover:cursor-pointer hover:text-white transition-[all] duration-700 mr-9">
-              View Profile
-            </button>
-            <button className="w-full md:w-36 mt-4 rounded-none border-2 px-2 py-4 border-black font-roboto-serif text-xs md:text-sm uppercase text-white bg-black hover:bg-white hover:cursor-pointer hover:text-black transition-[all] duration-700 mr-9 z-10">
-              Contact Us
-            </button>
+            <Link to="/about-us">
+              <button className="w-full md:w-36 rounded-none border-2 px-2 py-4 border-black font-roboto-serif text-xs md:text-sm uppercase text-black hover:bg-black hover:cursor-pointer hover:text-white transition-[all] duration-700 mr-9">
+                View Profile
+              </button>
+            </Link>
+            <Link to="/contact-us">
+              <button className="w-full md:w-36 mt-4 rounded-none border-2 px-2 py-4 border-black font-roboto-serif text-xs md:text-sm uppercase text-white bg-black hover:bg-white hover:cursor-pointer hover:text-black transition-[all] duration-700 mr-9 z-10">
+                Contact Us
+              </button>
+            </Link>
           </div>
         </div>
       </div>

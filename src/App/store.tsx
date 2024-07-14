@@ -4,6 +4,7 @@ import collectionSearchReducer from '../pages/Home/slices/CollectionSearchSlice.
 import propertySearchReducer from '../pages/PropertySearch/slices/PropertySearchSlice.tsx';
 import storiesReducer from '../common/slices/StoriesSlice.tsx';
 import homeValuationReducer from '../pages/HomeValuation/slices/HomeValuationSlice.tsx';
+import contactUsReducer from '../pages/ContactUs/slices/ContactUsSlice.tsx';
 
 export const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
     propertySearch: propertySearchReducer,
     stories: storiesReducer,
     homeValuation: homeValuationReducer,
+    contactUs: contactUsReducer,
   },
 });
 
