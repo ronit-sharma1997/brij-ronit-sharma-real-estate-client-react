@@ -24,8 +24,6 @@ const ContactUs: React.FC = () => {
 
   const dispatch = useAppDispatch();
 
-  console.log(status);
-
   const formState =
     status == 'idle' || status == 'loading' ? (
       <div></div>
@@ -113,7 +111,7 @@ const ContactUs: React.FC = () => {
                   className="shadow-sm block w-full border-2 placeholder:text-black rounded-md font-roboto-serif text-base md:text-xl py-1.5 md:py-3 ps-3 peer/name invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
                   placeholder="Name"
                   required
-                  pattern="[a-z]+"
+                  pattern="[A-Za-z]+"
                   value={name}
                   onChange={(event) => {
                     dispatch(setName(event.target.value));

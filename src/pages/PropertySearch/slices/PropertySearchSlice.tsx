@@ -238,7 +238,6 @@ export const propertySearchSlice = createSlice({
       })
       .addCase(fetchProperties.fulfilled, (state, action) => {
         state.status = 'succeeded';
-        console.log(action);
         state.properties = action.payload;
       })
       .addCase(fetchProperties.rejected, (state, action) => {

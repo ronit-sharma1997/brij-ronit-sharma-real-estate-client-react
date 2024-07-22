@@ -1,24 +1,48 @@
 import {
+  getHomeValuation,
   selectAddress,
   selectEmail,
   selectName,
   selectPhone,
+  selectStatus,
   setAddress,
   setEmail,
   setName,
-  setPage,
   setPhone,
 } from './slices/HomeValuationSlice.tsx';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../App/hook.ts';
+import { setStatus } from '../ContactUs/slices/ContactUsSlice.tsx';
 
 const HomeValuationContactInfo: React.FC = () => {
   const name = useAppSelector(selectName);
   const email = useAppSelector(selectEmail);
   const phone = useAppSelector(selectPhone);
   const address = useAppSelector(selectAddress);
+  const status = useAppSelector(selectStatus);
 
   const dispatch = useAppDispatch();
+
+  const formState =
+    status == 'failed' ? (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong className="font-bold">Holy smokes!</strong>
+        <span className="block sm:inline"> Something seriously bad happened.</span>
+        <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => dispatch(setStatus('idle'))}>
+          <svg
+            className="fill-current h-6 w-6 text-red-500"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <title>Close</title>
+            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+          </svg>
+        </span>
+      </div>
+    ) : (
+      <div></div>
+    );
 
   return (
     <>
@@ -35,7 +59,7 @@ const HomeValuationContactInfo: React.FC = () => {
             className="shadow-sm block w-full md:w-[35rem] border-2 placeholder:text-black rounded-md font-roboto-serif py-3 ps-3 peer/name invalid:[&:not(:placeholder-shown):not(:focus)]:border-red-500"
             placeholder="Name"
             required
-            pattern="[a-z]+"
+            pattern="[A-Za-z]+"
             value={name}
             onChange={(event) => {
               dispatch(setName(event.target.value));
@@ -93,11 +117,15 @@ const HomeValuationContactInfo: React.FC = () => {
             Please enter a valid address
           </span>
           <button
-            onClick={() => dispatch(setPage('2'))}
+            onClick={(event) => {
+              event.preventDefault();
+              dispatch(getHomeValuation());
+            }}
             className="rounded-md w-full md:w-[35rem] my-4 border-2 px-2 py-4 border-white bg-black text-white font-roboto-serif text-sm uppercase hover:bg-white hover:cursor-pointer hover:text-black hover:border-black transition-[all] duration-700 group-invalid:pointer-events-none group-invalid:opacity-30"
           >
             Get Home Valuation
           </button>
+          {formState}
         </form>
       </div>
     </>
