@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../../App/store.tsx';
 
 interface ContactUs {
@@ -6,6 +6,8 @@ interface ContactUs {
   email: string;
   phone: string;
   message: string;
+  status: string;
+  error: string | null;
 }
 
 const initialState: ContactUs = {
@@ -13,7 +15,22 @@ const initialState: ContactUs = {
   email: '',
   phone: '',
   message: '',
+  status: 'idle',
+  error: null,
 };
+
+export const sendMessage = createAsyncThunk('post/contactUs', async (_, { getState }) => {
+  const { contactUs } = getState() as RootState;
+  const response = await fetch(`https://lkwscjg84e.execute-api.us-east-1.amazonaws.com/Prod/contact-us`, {
+    method: 'POST',
+    body: JSON.stringify({
+      name: contactUs.name,
+      email: contactUs.email,
+      message: contactUs.message,
+    }),
+  });
+  return await response.json();
+});
 
 export const contactUsSlice = createSlice({
   name: 'contactUs',
@@ -31,6 +48,22 @@ export const contactUsSlice = createSlice({
     setMessage: (state, action: PayloadAction<string>) => {
       state.message = action.payload;
     },
+    setStatus: (state, action: PayloadAction<string>) => {
+      state.status = action.payload;
+    },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(sendMessage.pending, (state, action) => {
+        state.status = 'loading';
+      })
+      .addCase(sendMessage.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+      })
+      .addCase(sendMessage.rejected, (state, action) => {
+        state.status = 'failed';
+        state.error = action.error.message ?? null;
+      });
   },
 });
 
@@ -42,6 +75,8 @@ export const selectPhone = (state: RootState) => state.contactUs.phone;
 
 export const selectMessage = (state: RootState) => state.contactUs.message;
 
-export const { setName, setEmail, setPhone, setMessage } = contactUsSlice.actions;
+export const selectStatus = (state: RootState) => state.contactUs.status;
+
+export const { setName, setEmail, setPhone, setMessage, setStatus } = contactUsSlice.actions;
 
 export default contactUsSlice.reducer;

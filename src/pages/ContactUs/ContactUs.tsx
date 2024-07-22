@@ -7,18 +7,63 @@ import {
   selectName,
   selectPhone,
   selectMessage,
+  selectStatus,
   setEmail,
   setName,
   setPhone,
   setMessage,
+  sendMessage,
+  setStatus,
 } from './slices/ContactUsSlice.tsx';
 const ContactUs: React.FC = () => {
   const name = useAppSelector(selectName);
   const email = useAppSelector(selectEmail);
   const phone = useAppSelector(selectPhone);
   const message = useAppSelector(selectMessage);
+  const status = useAppSelector(selectStatus);
 
   const dispatch = useAppDispatch();
+
+  console.log(status);
+
+  const formState =
+    status == 'idle' || status == 'loading' ? (
+      <div></div>
+    ) : status == 'succeeded' ? (
+      <div
+        className="bg-green-200 border border-green-400 text-green-700 px-4 py-3 rounded relative font-roboto-serif"
+        role="alert"
+      >
+        <strong className="font-bold">Message Sent!</strong>
+        <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => dispatch(setStatus('idle'))}>
+          <svg
+            className="fill-current h-6 w-6 text-green-500"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <title>Close</title>
+            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+          </svg>
+        </span>
+      </div>
+    ) : (
+      <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+        <strong className="font-bold">Holy smokes!</strong>
+        <span className="block sm:inline"> Something seriously bad happened.</span>
+        <span className="absolute top-0 bottom-0 right-0 px-4 py-3" onClick={() => dispatch(setStatus('idle'))}>
+          <svg
+            className="fill-current h-6 w-6 text-red-500"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <title>Close</title>
+            <path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z" />
+          </svg>
+        </span>
+      </div>
+    );
 
   return (
     <>
@@ -123,9 +168,16 @@ const ContactUs: React.FC = () => {
                 <span className="mt-1 font-roboto-serif hidden text-sm text-red-500 peer-[&:not(:placeholder-shown):not(:focus):invalid]/message:block">
                   Please enter a valid message
                 </span>
-                <button className="rounded-md w-full my-4 border-2 px-2 py-3 md:py-4 border-white bg-black text-white font-roboto-serif text-sm uppercase hover:bg-white hover:cursor-pointer hover:text-black transition-[all] duration-700 group-invalid:pointer-events-none group-invalid:opacity-30">
+                <button
+                  onClick={(event) => {
+                    event.preventDefault();
+                    dispatch(sendMessage());
+                  }}
+                  className="rounded-md w-full my-4 border-2 px-2 py-3 md:py-4 border-white bg-black text-white font-roboto-serif text-sm uppercase hover:bg-white hover:cursor-pointer hover:text-black transition-[all] duration-700 group-invalid:pointer-events-none group-invalid:opacity-30"
+                >
                   Send Message
                 </button>
+                {formState}
               </form>
             </div>
           </div>
