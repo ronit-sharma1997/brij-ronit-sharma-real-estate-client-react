@@ -14,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}></Route>
         <Route path="/property-search" element={<PropertySearch />}></Route>
+        <Route path="/property-search/:city" element={<PropertySearch />}></Route>
         <Route path="/about-us" element={<AboutUs />}></Route>
         <Route path="/stories" element={<StoryPage />}></Route>
         <Route path="/stories/:storyTitle" element={<StoryFullArticle />}></Route>

@@ -2,6 +2,7 @@ import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
 import {
+  fetchProperties,
   selectMaxBaths,
   selectMaxBeds,
   selectMinBaths,
@@ -48,7 +49,10 @@ const BedBath: React.FC<{
                 type="text"
                 pattern="\d+"
                 value={minBeds}
-                onChange={(event) => dispatch(setMinBeds(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMinBeds(event.target.value));
+                  dispatch(fetchProperties());
+                }}
                 placeholder="Min"
               />
               <div className="text-2xl px-2 text-black/30">-</div>
@@ -56,7 +60,10 @@ const BedBath: React.FC<{
                 type="text"
                 pattern="\d+"
                 value={maxBeds}
-                onChange={(event) => dispatch(setMaxBeds(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMaxBeds(event.target.value));
+                  dispatch(fetchProperties());
+                }}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Max"
               />
@@ -69,7 +76,10 @@ const BedBath: React.FC<{
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Min"
                 value={minBaths}
-                onChange={(event) => dispatch(setMinBaths(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMinBaths(event.target.value));
+                  dispatch(fetchProperties());
+                }}
               />
               <div className="text-2xl px-2 text-black/30">-</div>
               <input
@@ -77,7 +87,10 @@ const BedBath: React.FC<{
                 type="text"
                 pattern="\d+"
                 value={maxBaths}
-                onChange={(event) => dispatch(setMaxBaths(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMaxBaths(event.target.value));
+                  dispatch(fetchProperties());
+                }}
                 placeholder="Max"
               />
             </div>
@@ -97,7 +110,10 @@ const BedBath: React.FC<{
               type="text"
               pattern="\d+"
               value={minBeds}
-              onChange={(event) => dispatch(setMinBeds(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMinBeds(event.target.value));
+                dispatch(fetchProperties());
+              }}
               placeholder="Min"
             />
             <div className="text-2xl px-2 text-black/30">-</div>
@@ -106,7 +122,10 @@ const BedBath: React.FC<{
               type="text"
               pattern="\d+"
               value={maxBeds}
-              onChange={(event) => dispatch(setMaxBeds(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMaxBeds(event.target.value));
+                dispatch(fetchProperties());
+              }}
               placeholder="Max"
             />
           </div>
@@ -118,7 +137,10 @@ const BedBath: React.FC<{
               pattern="\d+"
               placeholder="Min"
               value={minBaths}
-              onChange={(event) => dispatch(setMinBaths(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMinBaths(event.target.value));
+                dispatch(fetchProperties());
+              }}
             />
             <div className="text-2xl px-2 text-black/30">-</div>
             <input
@@ -127,7 +149,10 @@ const BedBath: React.FC<{
               type="text"
               pattern="\d+"
               value={maxBaths}
-              onChange={(event) => dispatch(setMaxBaths(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMaxBaths(event.target.value));
+                dispatch(fetchProperties());
+              }}
             />
           </div>
         </div>

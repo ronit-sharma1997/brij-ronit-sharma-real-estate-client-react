@@ -1,7 +1,13 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
-import { selectMaxPrice, selectMinPrice, setMaxPrice, setMinPrice } from '../slices/PropertySearchSlice.tsx';
+import {
+  fetchProperties,
+  selectMaxPrice,
+  selectMinPrice,
+  setMaxPrice,
+  setMinPrice,
+} from '../slices/PropertySearchSlice.tsx';
 
 const Price: React.FC<{
   buttonRef: React.RefObject<HTMLDivElement>;
@@ -36,7 +42,10 @@ const Price: React.FC<{
                 type="text"
                 pattern="\d+"
                 value={minPrice}
-                onChange={(event) => dispatch(setMinPrice(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMinPrice(event.target.value));
+                  dispatch(fetchProperties());
+                }}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Min"
               />
@@ -45,7 +54,10 @@ const Price: React.FC<{
                 type="text"
                 pattern="\d+"
                 value={maxPrice}
-                onChange={(event) => dispatch(setMaxPrice(event.target.value))}
+                onChange={(event) => {
+                  dispatch(setMaxPrice(event.target.value));
+                  dispatch(fetchProperties());
+                }}
                 className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
                 placeholder="Max"
               />
@@ -65,7 +77,10 @@ const Price: React.FC<{
               type="text"
               pattern="\d+"
               value={minPrice}
-              onChange={(event) => dispatch(setMinPrice(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMinPrice(event.target.value));
+                dispatch(fetchProperties());
+              }}
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
               placeholder="Min"
             />
@@ -74,7 +89,10 @@ const Price: React.FC<{
               type="text"
               pattern="\d+"
               value={maxPrice}
-              onChange={(event) => dispatch(setMaxPrice(event.target.value))}
+              onChange={(event) => {
+                dispatch(setMaxPrice(event.target.value));
+                dispatch(fetchProperties());
+              }}
               className="w-[46%] border-[0.75px] border-black/30 rounded-md py-2 ps-5"
               placeholder="Max"
             />

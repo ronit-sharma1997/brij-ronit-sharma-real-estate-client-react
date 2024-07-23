@@ -40,7 +40,10 @@ const ForSale: React.FC<{
               <>
                 <Disclosure.Button
                   className="w-full flex justify-between px-6 my-6 cursor-pointer"
-                  onPointerUp={() => dispatch(setSearchType(searchType === 'For Sale' ? 'For Rent' : 'For Sale'))}
+                  onPointerUp={() => {
+                    dispatch(setSearchType(searchType === 'For Sale' ? 'For Rent' : 'For Sale'));
+                    dispatch(fetchProperties());
+                  }}
                 >
                   <div>
                     <span className="bg-red-700 rounded-full w-4 h-4 inline-block align-middle mr-2"></span>
@@ -58,9 +61,10 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Active'}
-                        onChange={(event) =>
-                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Active', mlsStatus: 'Active' }))
-                        }
+                        onChange={(event) => {
+                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Active', mlsStatus: 'Active' }));
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Active
                     </div>
@@ -69,14 +73,15 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Active Coming Soon'}
-                        onChange={(event) =>
+                        onChange={(event) => {
                           dispatch(
                             setMLSStatus({
                               checked: mlsStatus !== 'Active Coming Soon',
                               mlsStatus: 'Active Coming Soon',
                             }),
-                          )
-                        }
+                          );
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Active Coming Soon
                     </div>
@@ -85,11 +90,12 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Under Contract'}
-                        onChange={(event) =>
+                        onChange={(event) => {
                           dispatch(
                             setMLSStatus({ checked: mlsStatus !== 'Under Contract', mlsStatus: 'Under Contract' }),
-                          )
-                        }
+                          );
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Under Contract
                     </div>
@@ -98,9 +104,10 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Closed'}
-                        onChange={(event) =>
-                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Closed', mlsStatus: 'Closed' }))
-                        }
+                        onChange={(event) => {
+                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Closed', mlsStatus: 'Closed' }));
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Closed
                     </div>
@@ -114,7 +121,10 @@ const ForSale: React.FC<{
               <>
                 <Disclosure.Button
                   className="w-full flex justify-between px-6 mb-6 cursor-pointer"
-                  onPointerUp={() => dispatch(setSearchType(searchType === 'For Sale' ? 'For Rent' : 'For Sale'))}
+                  onPointerUp={() => {
+                    dispatch(setSearchType(searchType === 'For Sale' ? 'For Rent' : 'For Sale'));
+                    dispatch(fetchProperties());
+                  }}
                 >
                   <div>
                     <span className="bg-green-700 rounded-full w-4 h-4 inline-block align-middle mr-2"></span>
@@ -132,9 +142,10 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Active'}
-                        onChange={(event) =>
-                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Active', mlsStatus: 'Active' }))
-                        }
+                        onChange={(event) => {
+                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Active', mlsStatus: 'Active' }));
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Active
                     </div>
@@ -143,14 +154,15 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Active Coming Soon'}
-                        onChange={(event) =>
+                        onChange={(event) => {
                           dispatch(
                             setMLSStatus({
                               checked: mlsStatus !== 'Active Coming Soon',
                               mlsStatus: 'Active Coming Soon',
                             }),
-                          )
-                        }
+                          );
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Active Coming Soon
                     </div>
@@ -159,11 +171,12 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Under Contract'}
-                        onChange={(event) =>
+                        onChange={(event) => {
                           dispatch(
                             setMLSStatus({ checked: mlsStatus !== 'Under Contract', mlsStatus: 'Under Contract' }),
-                          )
-                        }
+                          );
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Under Contract
                     </div>
@@ -172,9 +185,10 @@ const ForSale: React.FC<{
                         type="checkbox"
                         className="mr-5 align-middle"
                         checked={mlsStatus === 'Closed'}
-                        onChange={(event) =>
-                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Closed', mlsStatus: 'Closed' }))
-                        }
+                        onChange={(event) => {
+                          dispatch(setMLSStatus({ checked: mlsStatus !== 'Closed', mlsStatus: 'Closed' }));
+                          dispatch(fetchProperties());
+                        }}
                       />
                       Closed
                     </div>

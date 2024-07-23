@@ -1,18 +1,36 @@
 import NavBar from '../../../common/components/NavBar.tsx';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import 'leaflet/dist/leaflet.css';
 import './PropertySearch.css';
 import Filter from './Filter.tsx';
 import PropertySearchCards from './PropertySearchCards.tsx';
 import Map from './Map.tsx';
 import SearchBar from '../../../common/components/SearchBar.tsx';
-import { useAppSelector } from '../../../App/hook.ts';
-import { selectProperties } from '../slices/PropertySearchSlice.tsx';
+import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
+import { fetchProperties, selectProperties } from '../slices/PropertySearchSlice.tsx';
 import PropertySearchModal from './PropertySearchModal.tsx';
+import { useParams } from 'react-router-dom';
+import { setSelectedSearchResult } from '../../../common/slices/PropertySearchBarSlice.tsx';
 
 const PropertySearch: React.FC = () => {
+  const { city } = useParams();
   const [currentListingId, setCurrentListingId] = useState('');
   const properties = useAppSelector(selectProperties);
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    if (city) {
+      dispatch(
+        setSelectedSearchResult({
+          type: 'city',
+          label: city,
+          value: city,
+        }),
+      );
+      dispatch(fetchProperties());
+    }
+  }, []);
+
   return (
     <div className="h-screen flex flex-col">
       <NavBar

@@ -125,10 +125,18 @@ const initialState: PropertySearch = {
   isModalOpen: false,
 };
 
+const propertySubTypeMapping: Map<string, string> = new Map([
+  ['Houses', 'Single Family Residence'],
+  ['Townhomes', 'Townhouse,Condo/TH'],
+  ['Multi-Family', 'Town'],
+  ['Condos/Co-ops', 'Condo/TH'],
+  ['Apartments', '2 Family'],
+]);
+
 export const fetchProperties = createAsyncThunk('get/fetchProperties', async (_, { getState }) => {
   const { propertySearch, propertySearchBar } = getState() as RootState;
   const response = await fetch(
-    `https://hhk7xb1yja.execute-api.us-east-1.amazonaws.com/Prod/properties?city=${propertySearchBar.selectedSearchResult ? propertySearchBar.selectedSearchResult.value : 'Iselin'}&propertyType=${propertySearch.searchType === 'For Sale' ? 'Residential' : 'Residential Lease'}&mlsStatus=${propertySearch.mlsStatus === '' ? 'Active' : propertySearch.mlsStatus}`,
+    `https://hhk7xb1yja.execute-api.us-east-1.amazonaws.com/Prod/properties?city=${propertySearchBar.selectedSearchResult ? propertySearchBar.selectedSearchResult.value : 'Iselin'}&propertyType=${propertySearch.searchType === 'For Sale' ? 'Residential' : 'Residential Lease'}&mlsStatus=${propertySearch.mlsStatus === '' ? 'Active' : propertySearch.mlsStatus}${propertySearch.minBeds !== '' ? `&minBeds=${propertySearch.minBeds}` : ''}${propertySearch.maxBeds !== '' ? `&maxBeds=${propertySearch.maxBeds}` : ''}${propertySearch.minPrice !== '' ? `&minPrice=${propertySearch.minPrice.replace(/,/gi, '')}` : ''}${propertySearch.maxPrice !== '' ? `&maxPrice=${propertySearch.maxPrice.replace(/,/gi, '')}` : ''}${propertySearch.homeType.length > 0 ? `&propertySubType=${propertySearch.homeType.map((type) => propertySubTypeMapping.get(type)).join(',')}` : ''}`,
   );
   return await response.json();
 });

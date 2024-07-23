@@ -1,7 +1,7 @@
 import { ChevronDownIcon } from '@heroicons/react/20/solid';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../../App/hook.ts';
-import { selectHomeType, setHomeType } from '../slices/PropertySearchSlice.tsx';
+import { fetchProperties, selectHomeType, setHomeType } from '../slices/PropertySearchSlice.tsx';
 
 const HomeType: React.FC<{
   buttonRef: React.RefObject<HTMLDivElement>;
@@ -34,9 +34,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Houses')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Houses'), homeType: 'Houses' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Houses'), homeType: 'Houses' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Houses
             </div>
@@ -45,9 +46,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Townhomes')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Townhomes'), homeType: 'Townhomes' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Townhomes'), homeType: 'Townhomes' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Townhomes
             </div>
@@ -56,9 +58,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Multi-Family')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Multi-Family'), homeType: 'Multi-Family' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Multi-Family'), homeType: 'Multi-Family' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Multi-Family
             </div>
@@ -67,9 +70,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Condos/Co-ops')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Condos/Co-ops'), homeType: 'Condos/Co-ops' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Condos/Co-ops'), homeType: 'Condos/Co-ops' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Condos/Co-ops
             </div>
@@ -78,9 +82,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Lots/Lands')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Lots/Lands'), homeType: 'Lots/Lands' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Lots/Lands'), homeType: 'Lots/Lands' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Lots/Lands
             </div>
@@ -89,9 +94,10 @@ const HomeType: React.FC<{
                 type="checkbox"
                 className="mr-5 align-middle"
                 checked={homeType.includes('Apartments')}
-                onChange={(event) =>
-                  dispatch(setHomeType({ checked: !homeType.includes('Apartments'), homeType: 'Apartments' }))
-                }
+                onChange={(event) => {
+                  dispatch(setHomeType({ checked: !homeType.includes('Apartments'), homeType: 'Apartments' }));
+                  dispatch(fetchProperties());
+                }}
               />
               Apartments
             </div>
@@ -110,7 +116,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Houses')}
-              onChange={(event) => dispatch(setHomeType({ checked: !homeType.includes('Houses'), homeType: 'Houses' }))}
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Houses'), homeType: 'Houses' }));
+                dispatch(fetchProperties());
+              }}
             />
             Houses
           </div>
@@ -119,9 +128,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Townhomes')}
-              onChange={(event) =>
-                dispatch(setHomeType({ checked: !homeType.includes('Townhomes'), homeType: 'Townhomes' }))
-              }
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Townhomes'), homeType: 'Townhomes' }));
+                dispatch(fetchProperties());
+              }}
             />
             Townhomes
           </div>
@@ -130,9 +140,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Multi-Family')}
-              onChange={(event) =>
-                dispatch(setHomeType({ checked: !homeType.includes('Multi-Family'), homeType: 'Multi-Family' }))
-              }
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Multi-Family'), homeType: 'Multi-Family' }));
+                dispatch(fetchProperties());
+              }}
             />
             Multi-Family
           </div>
@@ -141,9 +152,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Condos/Co-ops')}
-              onChange={(event) =>
-                dispatch(setHomeType({ checked: !homeType.includes('Condos/Co-ops'), homeType: 'Condos/Co-ops' }))
-              }
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Condos/Co-ops'), homeType: 'Condos/Co-ops' }));
+                dispatch(fetchProperties());
+              }}
             />
             Condos/Co-ops
           </div>
@@ -152,9 +164,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Lots/Lands')}
-              onChange={(event) =>
-                dispatch(setHomeType({ checked: !homeType.includes('Lots/Lands'), homeType: 'Lots/Lands' }))
-              }
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Lots/Lands'), homeType: 'Lots/Lands' }));
+                dispatch(fetchProperties());
+              }}
             />
             Lots/Lands
           </div>
@@ -163,9 +176,10 @@ const HomeType: React.FC<{
               type="checkbox"
               className="mr-5 align-middle"
               checked={homeType.includes('Apartments')}
-              onChange={(event) =>
-                dispatch(setHomeType({ checked: !homeType.includes('Apartments'), homeType: 'Apartments' }))
-              }
+              onChange={(event) => {
+                dispatch(setHomeType({ checked: !homeType.includes('Apartments'), homeType: 'Apartments' }));
+                dispatch(fetchProperties());
+              }}
             />
             Apartments
           </div>
